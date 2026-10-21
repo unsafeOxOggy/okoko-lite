@@ -28,6 +28,9 @@ for d in i3 rofi kitty picom dunst; do
 done
 chmod +x ~/.config/rofi/powermenu.sh
 
+# display scale 1.1 (Xft.dpi), read at login
+cp --backup=numbered .Xresources ~/.Xresources
+
 mkdir -p ~/.wallpaper
 cp .wallpaper/okoko.jpg ~/.wallpaper/
 printf '#!/bin/sh\nfeh --no-fehbg --bg-fill "$HOME/.wallpaper/okoko.jpg"\n' > ~/.fehbg

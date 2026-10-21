@@ -1,0 +1,8 @@
+! okoko-lite - X resources (loaded at login by the Kali Xsession)
+! Display scale 1.1, like "monitor = , preferred, auto, 1.1" on Hyprland:
+! 96 dpi x 1.1 = 106. Text and apps grow 10% and stay sharp (no xrandr --scale blur).
+Xft.dpi: 106
+Xft.antialias: true
+Xft.hinting: true
+Xft.hintstyle: hintslight
+Xft.rgba: rgb

@@ -46,6 +46,7 @@ login screen and log back in. Existing configs are kept as `file.~1~`.
 .config/picom/picom.conf     shadows, rounded corners
 .config/dunst/dunstrc        notifications
 .wallpaper/okoko.jpg         wallpaper (set by ~/.fehbg)
+.Xresources                  display scale 1.1 (Xft.dpi 106), edit it to change the size
 ```
 
 To change a color, edit it in these files (same hex codes everywhere).
