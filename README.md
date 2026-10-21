@@ -1,8 +1,8 @@
 # okoko-lite
 
-The look of [okoko](https://github.com/unsafeOxOggy/okoko) (i3 + polybar "islands",
-dark green theme) in plain config files, as simple as kali-clean: no theme engine,
-no CLI, one installer that copies the files.
+The look of [okoko](https://github.com/unsafeOxOggy/okoko) (dark green theme) with
+the bar of [kali-clean](https://github.com/xct/kali-clean) by xct (i3bar + i3blocks),
+in plain config files: no theme engine, no CLI, one installer that copies the files.
 
 Palette: https://colorhunt.co/palette/091413285a48408a71b0e4cc
 
@@ -38,9 +38,8 @@ login screen and log back in. Existing configs are kept as `file.~1~`.
 ## Files
 
 ```
-.config/i3/config            i3 (colors, gaps, keys, autostart)
-.config/polybar/config.ini   the four islands of the bar
-.config/polybar/launch.sh    starts them, restarts them when the screen size changes
+.config/i3/config            i3 (colors, gaps, keys, bar, autostart)
+.config/i3/i3blocks.conf     bar blocks: cpu, ram, disk, traffic, tun0 ip, date
 .config/rofi/config.rasi     launcher theme
 .config/rofi/powermenu.sh    lock / logout / reboot / shutdown
 .config/kitty/kitty.conf     terminal + colors
@@ -58,4 +57,4 @@ VM display auto-fit (use [kvm-autofit](https://github.com/unsafeOxOggy/kvm-autof
 
 ## Credits
 
-Bar style after waybar-themes V2.2 by HANCORE-linux. Icons: Nerd Fonts.
+Bar after kali-clean by xct. Icons: Nerd Fonts.

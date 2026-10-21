@@ -5,7 +5,7 @@ cd "$(dirname "$0")"
 [ "$(id -u)" = 0 ] && { echo "run as your normal user, not root"; exit 1; }
 
 sudo apt update
-sudo apt install -y i3 polybar picom kitty rofi feh dunst flameshot thunar \
+sudo apt install -y i3 i3blocks picom kitty rofi feh dunst flameshot thunar \
     xfce4-screensaver papirus-icon-theme unclutter libnotify-bin \
     spice-vdagent network-manager-applet wget
 
@@ -22,11 +22,11 @@ if ! fc-list | grep -qi "JetBrainsMono Nerd Font"; then
 fi
 
 # copy the configs (an existing file is kept as file.~1~)
-for d in i3 polybar rofi kitty picom dunst; do
+for d in i3 rofi kitty picom dunst; do
     mkdir -p ~/.config/$d
     cp -r --backup=numbered .config/$d/. ~/.config/$d/
 done
-chmod +x ~/.config/polybar/launch.sh ~/.config/rofi/powermenu.sh
+chmod +x ~/.config/rofi/powermenu.sh
 
 mkdir -p ~/.wallpaper
 cp .wallpaper/okoko.jpg ~/.wallpaper/

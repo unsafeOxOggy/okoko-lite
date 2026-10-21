@@ -14,8 +14,6 @@ default_floating_border pixel 2
 hide_edge_borders smart
 gaps inner 6
 gaps outer 2
-# room for the floating polybar islands
-gaps top 36
 
 #                       border  background text    indicator child_border
 client.focused          #408A71 #408A71    #091413 #5FD38D   #408A71
@@ -25,6 +23,26 @@ client.urgent           #E0607E #E0607E    #091413 #E0607E   #E0607E
 client.placeholder      #091413 #091413    #B0E4CC #091413   #091413
 client.background       #091413
 
+# -- bar: i3bar + i3blocks, like kali-clean (xct) ----------
+# -t: transparent background (needs picom). i3bar follows screen size changes itself.
+bar {
+    status_command i3blocks -c ~/.config/i3/i3blocks.conf
+    i3bar_command i3bar -t
+    position top
+    height 26
+    font pango:JetBrainsMono Nerd Font 8
+    colors {
+        background #09141388
+        statusline #B0E4CC
+        separator  #285A48
+        #                  border    background text
+        focused_workspace  #408A71   #285A48CC  #B0E4CC
+        active_workspace   #285A4888 #285A4888  #B0E4CC
+        inactive_workspace #00000000 #00000000  #6E9A8A
+        urgent_workspace   #E0607E   #E0607E    #091413
+    }
+}
+
 # -- autostart --------------------------------------------
 exec --no-startup-id picom --config ~/.config/picom/picom.conf
 exec --no-startup-id dunst
@@ -33,9 +51,7 @@ exec --no-startup-id spice-vdagent
 exec --no-startup-id nm-applet --indicator
 exec --no-startup-id unclutter --timeout 3
 exec --no-startup-id kitty -1 --instance-group okoko --start-as=hidden
-exec --no-startup-id ~/.config/polybar/launch.sh --watch
 exec_always --no-startup-id ~/.fehbg
-exec_always --no-startup-id ~/.config/polybar/launch.sh
 
 # -- apps -------------------------------------------------
 bindsym $mod+Return exec --no-startup-id $term
