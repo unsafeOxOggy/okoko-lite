@@ -31,15 +31,11 @@ bar {
     position top
     height 26
     font pango:JetBrainsMono Nerd Font 8
+    # colors of kali-clean (xct)
     colors {
-        background #09141388
-        statusline #B0E4CC
-        separator  #285A48
-        #                  border    background text
-        focused_workspace  #408A71   #285A48CC  #B0E4CC
-        active_workspace   #285A4888 #285A4888  #B0E4CC
-        inactive_workspace #00000000 #00000000  #6E9A8A
-        urgent_workspace   #E0607E   #E0607E    #091413
+        background #1C1D2B88
+        statusline #E6FFF5
+        focused_workspace #282A3E88 #282A3E88 #FFFFFF
     }
 }
 
