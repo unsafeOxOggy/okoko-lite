@@ -1,0 +1,32 @@
+# okoko-lite - dunst
+[global]
+    follow = mouse
+    origin = top-right
+    offset = (12, 44)
+    width = (240, 380)
+    notification_limit = 5
+    corner_radius = 8
+    frame_width = 2
+    frame_color = "#408A71"
+    separator_color = frame
+    padding = 10
+    horizontal_padding = 12
+    gap_size = 6
+    font = JetBrainsMono Nerd Font 10
+    format = "<b>%s</b>\n%b"
+    icon_theme = Papirus-Dark
+    max_icon_size = 40
+
+[urgency_low]
+    background = "#091413"
+    foreground = "#6E9A8A"
+    timeout = 4
+[urgency_normal]
+    background = "#091413"
+    foreground = "#B0E4CC"
+    timeout = 6
+[urgency_critical]
+    background = "#091413"
+    foreground = "#B0E4CC"
+    frame_color = "#E0607E"
+    timeout = 0

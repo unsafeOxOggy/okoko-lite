@@ -1,0 +1,65 @@
+/* okoko-lite - rofi */
+configuration {
+    modi: "drun";
+    terminal: "kitty";
+    show-icons: true;
+    icon-theme: "Papirus-Dark";
+    drun-display-format: "{name}";
+    display-drun: "󰍉  apps";
+    hover-select: true;
+    me-select-entry: "";
+    me-accept-entry: "MousePrimary";
+}
+
+* {
+    bg-base:    #091413;
+    bg-alt:     #0F1F1C;
+    surface:    #285A48;
+    accent:     #408A71;
+    accent2:    #5FD38D;
+    text-main:  #B0E4CC;
+    text-muted: #6E9A8A;
+    urgent:     #E0607E;
+
+    font: "JetBrainsMono Nerd Font 11";
+    background-color: transparent;
+    text-color: @text-main;
+    margin: 0;
+    padding: 0;
+    spacing: 0;
+}
+
+window {
+    width: 640px;
+    location: center;
+    anchor: center;
+    border: 2px;
+    border-color: @accent;
+    background-color: @bg-base;
+    padding: 14px;
+}
+
+mainbox { spacing: 12px; children: [ inputbar, listview ]; }
+
+inputbar { spacing: 10px; children: [ prompt, entry ]; }
+prompt {
+    background-color: @accent;
+    text-color: @bg-base;
+    padding: 8px 14px;
+}
+entry {
+    background-color: @bg-alt;
+    padding: 8px 14px;
+    placeholder: "search...";
+    placeholder-color: @text-muted;
+}
+
+listview { lines: 8; columns: 1; fixed-height: false; dynamic: true; scrollbar: false; spacing: 4px; cycle: true; }
+element { padding: 7px 12px; spacing: 10px; }
+element-icon { size: 20px; }
+element-text { text-color: inherit; vertical-align: 0.5; }
+element normal.normal, element alternate.normal { background-color: transparent; text-color: @text-main; }
+element selected.normal { background-color: @surface; text-color: @text-main; }
+element selected.active { background-color: @accent; text-color: @bg-base; }
+element normal.urgent, element selected.urgent { text-color: @urgent; }
+element normal.active { text-color: @accent2; }

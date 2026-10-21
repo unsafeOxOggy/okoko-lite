@@ -1,0 +1,119 @@
+# okoko-lite - i3 config (one file, colors of the okoko theme)
+# Palette: https://colorhunt.co/palette/091413285a48408a71b0e4cc
+set $mod Mod4
+# One kitty process for every terminal: new windows open instantly (pre-started below)
+set $term kitty -1 --instance-group okoko
+
+font pango:JetBrainsMono Nerd Font 9
+floating_modifier $mod
+focus_follows_mouse no
+workspace_auto_back_and_forth yes
+
+default_border pixel 2
+default_floating_border pixel 2
+hide_edge_borders smart
+gaps inner 6
+gaps outer 2
+# room for the floating polybar islands
+gaps top 36
+
+#                       border  background text    indicator child_border
+client.focused          #408A71 #408A71    #091413 #5FD38D   #408A71
+client.focused_inactive #285A48 #285A48    #B0E4CC #285A48   #285A48
+client.unfocused        #0F1F1C #0F1F1C    #6E9A8A #0F1F1C   #0F1F1C
+client.urgent           #E0607E #E0607E    #091413 #E0607E   #E0607E
+client.placeholder      #091413 #091413    #B0E4CC #091413   #091413
+client.background       #091413
+
+# -- autostart --------------------------------------------
+exec --no-startup-id picom --config ~/.config/picom/picom.conf
+exec --no-startup-id dunst
+exec --no-startup-id xfce4-screensaver
+exec --no-startup-id spice-vdagent
+exec --no-startup-id nm-applet --indicator
+exec --no-startup-id unclutter --timeout 3
+exec --no-startup-id kitty -1 --instance-group okoko --start-as=hidden
+exec --no-startup-id ~/.config/polybar/launch.sh --watch
+exec_always --no-startup-id ~/.fehbg
+exec_always --no-startup-id ~/.config/polybar/launch.sh
+
+# -- apps -------------------------------------------------
+bindsym $mod+Return exec --no-startup-id $term
+bindsym $mod+space exec --no-startup-id rofi -show drun
+bindsym $mod+Tab exec --no-startup-id rofi -show window
+bindsym $mod+Shift+f exec thunar
+bindsym $mod+Shift+b exec firefox
+
+# -- system -----------------------------------------------
+bindsym $mod+Escape exec --no-startup-id xflock4
+bindsym $mod+Shift+Escape exec --no-startup-id ~/.config/rofi/powermenu.sh
+bindsym Print exec --no-startup-id flameshot gui
+bindsym $mod+n exec --no-startup-id dunstctl close-all
+bindsym $mod+Shift+c reload
+bindsym $mod+Shift+r restart
+bindsym $mod+Shift+e exec --no-startup-id ~/.config/rofi/powermenu.sh
+
+# -- windows ----------------------------------------------
+bindsym $mod+w kill
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+bindsym $mod+f fullscreen toggle
+bindsym $mod+Shift+space floating toggle
+bindsym $mod+s layout tabbed
+bindsym $mod+e layout toggle split
+bindsym $mod+b split h
+bindsym $mod+v split v
+bindsym $mod+a focus parent
+bindsym $mod+Shift+minus move scratchpad
+bindsym $mod+minus scratchpad show
+bindsym $mod+r mode "resize"
+
+mode "resize" {
+    bindsym h resize shrink width 10 px or 5 ppt
+    bindsym j resize grow height 10 px or 5 ppt
+    bindsym k resize shrink height 10 px or 5 ppt
+    bindsym l resize grow width 10 px or 5 ppt
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+# -- workspaces -------------------------------------------
+bindsym $mod+1 workspace number 1
+bindsym $mod+2 workspace number 2
+bindsym $mod+3 workspace number 3
+bindsym $mod+4 workspace number 4
+bindsym $mod+5 workspace number 5
+bindsym $mod+6 workspace number 6
+bindsym $mod+7 workspace number 7
+bindsym $mod+8 workspace number 8
+bindsym $mod+9 workspace number 9
+bindsym $mod+Shift+1 move container to workspace number 1
+bindsym $mod+Shift+2 move container to workspace number 2
+bindsym $mod+Shift+3 move container to workspace number 3
+bindsym $mod+Shift+4 move container to workspace number 4
+bindsym $mod+Shift+5 move container to workspace number 5
+bindsym $mod+Shift+6 move container to workspace number 6
+bindsym $mod+Shift+7 move container to workspace number 7
+bindsym $mod+Shift+8 move container to workspace number 8
+bindsym $mod+Shift+9 move container to workspace number 9
+
+# -- window rules -----------------------------------------
+for_window [class="okoko-float"] floating enable, resize set 960 600, move position center
+for_window [window_role="(?i)pop-up|dialog"] floating enable
+for_window [window_type="dialog"] floating enable
+for_window [class="(?i)arandr|lxappearance|pavucontrol|nm-connection-editor"] floating enable
+for_window [class="(?i)flameshot"] floating enable, border none
