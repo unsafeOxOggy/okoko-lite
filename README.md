@@ -1,10 +1,12 @@
 # okoko-lite
 
-The look of [okoko](https://github.com/unsafeOxOggy/okoko) (dark green theme) with
-the bar of [kali-clean](https://github.com/xct/kali-clean) by xct (i3bar + i3blocks),
+The look of [kali-clean](https://github.com/xct/kali-clean) by xct (i3bar + i3blocks,
+his colors everywhere) with the layout of [okoko](https://github.com/unsafeOxOggy/okoko),
 in plain config files: no theme engine, no CLI, one installer that copies the files.
 
-Palette: https://colorhunt.co/palette/091413285a48408a71b0e4cc
+Colors (from xct's configs): background `#1C1D2B`, surface `#282A3E`, focused window
+`#82C8FF`, other windows `#333333`, text `#E6FFF5`, VPN `#3BB92D`, urgent `#900000`;
+terminal: his alacritty palette (Tomorrow Night Bright) on `#000000`.
 
 ## Installation
 
@@ -21,7 +23,8 @@ login screen and log back in. Existing configs are kept as `file.~1~`.
 
 | Key                   | Action                    |
 |-----------------------|---------------------------|
-| Super+Enter           | terminal (kitty)          |
+| Super+Enter           | terminal (xfce4-terminal) |
+| Super+q               | next wallpaper            |
 | Super+Space           | applications (rofi)       |
 | Super+Tab             | switch window             |
 | Super+w               | close window              |
@@ -42,14 +45,36 @@ login screen and log back in. Existing configs are kept as `file.~1~`.
 .config/i3/i3blocks.conf     bar blocks: cpu, ram, disk, traffic, tun0 ip, date
 .config/rofi/config.rasi     launcher theme
 .config/rofi/powermenu.sh    lock / logout / reboot / shutdown
-.config/kitty/kitty.conf     terminal + colors
+.config/i3/terminal.sh       terminal font + colors (xfce4-terminal keeps them in xfconf)
+.config/i3/wallpaper.sh      next wallpaper (Super+q)
 .config/picom/picom.conf     shadows, rounded corners
 .config/dunst/dunstrc        notifications
-.wallpaper/okoko.jpg         wallpaper (set by ~/.fehbg)
+.wallpaper/                  7 wallpapers (set by ~/.fehbg)
 .Xresources                  display scale 1.1 (Xft.dpi 106), edit it to change the size
 ```
 
 To change a color, edit it in these files (same hex codes everywhere).
+
+## Wallpapers
+
+Six geometric wallpapers in xct's blues, drawn with okoko's generator
+(`lib/wallgen.py`): exact figures, computed projections, never stretched.
+
+| File | Figure |
+|---|---|
+| `01-e8.jpg` | Gosset 4_21 polytope (E8 roots, 240 vertices, 6720 edges), Coxeter plane |
+| `02-h4.jpg` | 600-cell, H4 Coxeter plane (30-gon Petrie polygon) |
+| `03-stereo.jpg` | 24-cell, stereographic projection (edges become arcs) |
+| `04-hopf.jpg` | Hopf fibration (Villarceau circles on nested tori) |
+| `05-penrose.jpg` | Penrose P3 tiling from de Bruijn's pentagrid |
+| `06-kali.jpg` | 5-cube (penteract) and the Kali shell prompt |
+
+Plus `okoko.jpg`, the grayscale illustration of the first okoko-lite.
+
+## Why xfce4-terminal
+
+In a VM with 3D acceleration off, kitty (OpenGL) renders on the CPU: about 74 ms from
+key press to screen. xfce4-terminal needs no OpenGL: about 25 ms (measured).
 
 ## Not included (see okoko)
 
@@ -58,4 +83,5 @@ VM display auto-fit (use [kvm-autofit](https://github.com/unsafeOxOggy/kvm-autof
 
 ## Credits
 
-Bar after kali-clean by xct. Icons: Nerd Fonts.
+Colors and bar after kali-clean by xct. Icons: Nerd Fonts. Wallpapers 01-06: drawn by
+okoko's `lib/wallgen.py` (MIT, same author).

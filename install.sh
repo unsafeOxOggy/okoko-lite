@@ -5,11 +5,11 @@ cd "$(dirname "$0")"
 [ "$(id -u)" = 0 ] && { echo "run as your normal user, not root"; exit 1; }
 
 sudo apt update
-sudo apt install -y i3 i3blocks picom kitty rofi feh dunst flameshot thunar \
-    xfce4-screensaver papirus-icon-theme unclutter libnotify-bin \
+sudo apt install -y i3 i3blocks picom xfce4-terminal rofi feh dunst flameshot thunar \
+    xfce4-screensaver papirus-icon-theme unclutter libnotify-bin xfconf \
     spice-vdagent network-manager-applet wget
 
-# JetBrainsMono Nerd Font (icons of the bar, rofi and kitty), checksum checked
+# JetBrainsMono Nerd Font (icons of the bar, rofi and the terminal), checksum checked
 if ! fc-list | grep -qi "JetBrainsMono Nerd Font"; then
     font=$(mktemp)
     wget -q -O "$font" \
@@ -22,19 +22,20 @@ if ! fc-list | grep -qi "JetBrainsMono Nerd Font"; then
 fi
 
 # copy the configs (an existing file is kept as file.~1~)
-for d in i3 rofi kitty picom dunst; do
+for d in i3 rofi picom dunst; do
     mkdir -p ~/.config/$d
     cp -r --backup=numbered .config/$d/. ~/.config/$d/
 done
-chmod +x ~/.config/rofi/powermenu.sh
+chmod +x ~/.config/rofi/powermenu.sh ~/.config/i3/terminal.sh ~/.config/i3/wallpaper.sh
 
 # display scale 1.1 (Xft.dpi), read at login
 cp --backup=numbered .Xresources ~/.Xresources
 
 mkdir -p ~/.wallpaper
-cp .wallpaper/okoko.jpg ~/.wallpaper/
-printf '#!/bin/sh\nfeh --no-fehbg --bg-fill "$HOME/.wallpaper/okoko.jpg"\n' > ~/.fehbg
+cp .wallpaper/* ~/.wallpaper/
+# same format as feh writes it (absolute path in single quotes): wallpaper.sh reads it back
+printf "#!/bin/sh\nfeh --no-fehbg --bg-fill '%s'\n" "$HOME/.wallpaper/01-e8.jpg" > ~/.fehbg
 chmod +x ~/.fehbg
 
 echo "Done! Log out, pick i3 on the login screen and log back in."
-echo "Super+Enter: terminal - Super+Space: apps - Super+Shift+Escape: power menu"
+echo "Super+Enter: terminal - Super+Space: apps - Super+q: next wallpaper - Super+Shift+Escape: power menu"

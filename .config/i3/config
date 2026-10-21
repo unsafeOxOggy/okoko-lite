@@ -1,8 +1,8 @@
-# okoko-lite - i3 config (one file, colors of the okoko theme)
-# Palette: https://colorhunt.co/palette/091413285a48408a71b0e4cc
+# okoko-lite - i3 config (one file, colors of kali-clean by xct)
 set $mod Mod4
-# One kitty process for every terminal: new windows open instantly (pre-started below)
-set $term kitty -1 --instance-group okoko
+# xfce4-terminal: no OpenGL needed, ~25 ms from key press to screen in a VM without 3D
+# (kitty needs OpenGL and falls back to software rendering there: ~74 ms)
+set $term xfce4-terminal
 
 font pango:JetBrainsMono Nerd Font 9
 floating_modifier $mod
@@ -15,13 +15,14 @@ hide_edge_borders smart
 gaps inner 6
 gaps outer 2
 
+# window colors of kali-clean (xct)
 #                       border  background text    indicator child_border
-client.focused          #408A71 #408A71    #091413 #5FD38D   #408A71
-client.focused_inactive #285A48 #285A48    #B0E4CC #285A48   #285A48
-client.unfocused        #0F1F1C #0F1F1C    #6E9A8A #0F1F1C   #0F1F1C
-client.urgent           #E0607E #E0607E    #091413 #E0607E   #E0607E
-client.placeholder      #091413 #091413    #B0E4CC #091413   #091413
-client.background       #091413
+client.focused          #82C8FF #82C8FF    #1C1D2B #82C8FF   #82C8FF
+client.focused_inactive #333333 #333333    #888888 #333333   #333333
+client.unfocused        #333333 #333333    #888888 #333333   #333333
+client.urgent           #900000 #900000    #FFFFFF #900000   #900000
+client.placeholder      #1C1D2B #1C1D2B    #E6FFF5 #1C1D2B   #1C1D2B
+client.background       #1C1D2B
 
 # -- bar: i3bar + i3blocks, like kali-clean (xct) ----------
 # -t: transparent background (needs picom). i3bar follows screen size changes itself.
@@ -46,7 +47,7 @@ exec --no-startup-id xfce4-screensaver
 exec --no-startup-id spice-vdagent
 exec --no-startup-id nm-applet --indicator
 exec --no-startup-id unclutter --timeout 3
-exec --no-startup-id kitty -1 --instance-group okoko --start-as=hidden
+exec --no-startup-id ~/.config/i3/terminal.sh
 exec_always --no-startup-id ~/.fehbg
 
 # -- apps -------------------------------------------------
@@ -55,6 +56,7 @@ bindsym $mod+space exec --no-startup-id rofi -show drun
 bindsym $mod+Tab exec --no-startup-id rofi -show window
 bindsym $mod+Shift+f exec thunar
 bindsym $mod+Shift+b exec firefox
+bindsym $mod+q exec --no-startup-id ~/.config/i3/wallpaper.sh
 
 # -- system -----------------------------------------------
 bindsym $mod+Escape exec --no-startup-id xflock4
@@ -124,7 +126,7 @@ bindsym $mod+Shift+8 move container to workspace number 8
 bindsym $mod+Shift+9 move container to workspace number 9
 
 # -- window rules -----------------------------------------
-for_window [class="okoko-float"] floating enable, resize set 960 600, move position center
+for_window [window_role="okoko-float"] floating enable, resize set 960 600, move position center
 for_window [window_role="(?i)pop-up|dialog"] floating enable
 for_window [window_type="dialog"] floating enable
 for_window [class="(?i)arandr|lxappearance|pavucontrol|nm-connection-editor"] floating enable

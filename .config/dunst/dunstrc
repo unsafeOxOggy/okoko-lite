@@ -7,7 +7,7 @@
     notification_limit = 5
     corner_radius = 8
     frame_width = 2
-    frame_color = "#408A71"
+    frame_color = "#82C8FF"
     separator_color = frame
     padding = 10
     horizontal_padding = 12
@@ -18,15 +18,15 @@
     max_icon_size = 40
 
 [urgency_low]
-    background = "#091413"
-    foreground = "#6E9A8A"
+    background = "#1C1D2B"
+    foreground = "#888888"
     timeout = 4
 [urgency_normal]
-    background = "#091413"
-    foreground = "#B0E4CC"
+    background = "#1C1D2B"
+    foreground = "#E6FFF5"
     timeout = 6
 [urgency_critical]
-    background = "#091413"
-    foreground = "#B0E4CC"
-    frame_color = "#E0607E"
+    background = "#1C1D2B"
+    foreground = "#E6FFF5"
+    frame_color = "#D54E53"
     timeout = 0

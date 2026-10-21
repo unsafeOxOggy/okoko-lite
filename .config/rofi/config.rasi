@@ -1,7 +1,7 @@
 /* okoko-lite - rofi */
 configuration {
     modi: "drun";
-    terminal: "kitty";
+    terminal: "xfce4-terminal";
     show-icons: true;
     icon-theme: "Papirus-Dark";
     drun-display-format: "{name}";
@@ -12,14 +12,15 @@ configuration {
 }
 
 * {
-    bg-base:    #091413;
-    bg-alt:     #0F1F1C;
-    surface:    #285A48;
-    accent:     #408A71;
-    accent2:    #5FD38D;
-    text-main:  #B0E4CC;
-    text-muted: #6E9A8A;
-    urgent:     #E0607E;
+    /* colors of kali-clean (xct) */
+    bg-base:    #1C1D2B;
+    bg-alt:     #282A3E;
+    surface:    #333650;
+    accent:     #82C8FF;
+    accent2:    #3BB92D;
+    text-main:  #E6FFF5;
+    text-muted: #888888;
+    urgent:     #D54E53;
 
     font: "JetBrainsMono Nerd Font 11";
     background-color: transparent;
