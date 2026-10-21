@@ -7,7 +7,7 @@ cd "$(dirname "$0")"
 sudo apt update
 sudo apt install -y i3 polybar picom kitty rofi feh dunst flameshot thunar \
     xfce4-screensaver papirus-icon-theme unclutter libnotify-bin \
-    spice-vdagent network-manager-gnome wget
+    spice-vdagent network-manager-applet wget
 
 # JetBrainsMono Nerd Font (icons of the bar, rofi and kitty), checksum checked
 if ! fc-list | grep -qi "JetBrainsMono Nerd Font"; then
