@@ -7,12 +7,6 @@
 BARS="icons workspaces title status"
 
 launch() {
-    # i3 starts picom and the bar together: an island drawn before picom composites
-    # stays blank, so give picom up to 3s to come up first.
-    if command -v picom >/dev/null; then
-        for _ in $(seq 30); do pgrep -x picom >/dev/null && break; sleep 0.1; done
-        sleep 1
-    fi
     pkill -x polybar
     while pgrep -x polybar >/dev/null; do sleep 0.2; done
     for m in $(polybar --list-monitors | cut -d: -f1); do
